@@ -19,8 +19,9 @@ export default {};
     margin-top: 60px
 
     > a
-      font-size: 16px
+      font-size: 15px
       text-decoration: none
       color: #000
       margin: 0 8px
+      text-transform: uppercase
 </style>

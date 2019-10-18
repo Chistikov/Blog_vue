@@ -31,6 +31,38 @@
             <!-- <q-chip dense color="orange" text-color="white" icon-right="star">Star</q-chip> -->
             <div>
               <q-chip outline color="orange" text-color="white" icon-right="star">Star</q-chip>
+              <q-chip color="primary" text-color="white" icon="bookmark">subscribe</q-chip>
+            </div>
+          </div>
+          <div class="tags"></div>
+          <div class="postContent q-mt-lx">
+            <div class="title">Lorem, ipsum dolor.</div>Lorem ipsum, dolor sit amet
+            consectetur adipisicing
+            elit. Odio illo in quaerat repudiandae nam fugit iusto architecto?
+            Ut, cupiditate doloremque! Dignissimos ullam pariatur illo! Cum cumque quidem
+            perferendis animi molestiae maiores eaque nisi minus. Nisi, officia? Voluptas,
+            doloremque doloribus sapiente asperiores a delectus.
+          </div>
+        </div>
+      </div>
+
+      <div class="postsWrp">
+        <div class="postCard">
+          <div
+            class="userData"
+            style="backgroudImage: url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80')"
+          >
+            <q-avatar size="45px" class="avatar">
+              <img src="https://cdn.quasar.dev/img/avatar.png" />
+            </q-avatar>
+            <div class="rBlock">
+              <div class="login">@ndev98</div>
+              <div class="username">John Doe</div>
+            </div>
+
+            <div>
+              <q-chip outline color="orange" text-color="white" icon-right="star">Star</q-chip>
+              <q-chip color="primary" text-color="white" icon="bookmark">subscribe</q-chip>
             </div>
           </div>
           <div class="tags"></div>
@@ -62,6 +94,7 @@
             <!-- <q-chip dense color="orange" text-color="white" icon-right="star">Star</q-chip> -->
             <div>
               <q-chip outline color="orange" text-color="white" icon-right="star">Star</q-chip>
+              <q-chip color="primary" text-color="white" icon="bookmark">subscribe</q-chip>
             </div>
           </div>
           <div class="tags"></div>
@@ -69,40 +102,6 @@
             <div class="title">Lorem, ipsum dolor.</div>Lorem ipsum, dolor sit amet
             consectetur adipisicing
             elit. Odio illo in quaerat repudiandae nam fugit iusto architecto?
-            Ut, cupiditate doloremque! Dignissimos ullam pariatur illo! Cum cumque quidem
-            perferendis animi molestiae maiores eaque nisi minus. Nisi, officia? Voluptas,
-            doloremque doloribus sapiente asperiores a delectus.
-          </div>
-        </div>
-      </div>
-
-      <div class="postsWrp">
-        <div class="postCard">
-          <div
-            class="userData"
-            style="backgroudImage: url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80')"
-          >
-            <q-avatar size="45px" class="avatar">
-              <img src="https://cdn.quasar.dev/img/avatar.png" />
-            </q-avatar>
-            <div class="rBlock">
-              <div class="login">@ndev98</div>
-              <div class="username">John Doe</div>
-            </div>
-
-            <!-- <q-chip dense color="orange" text-color="white" icon-right="star">Star</q-chip> -->
-            <div>
-              <q-chip outline color="orange" text-color="white" icon-right="star">Star</q-chip>
-            </div>
-          </div>
-          <div class="tags"></div>
-          <div class="postContent q-mt-lx">
-            <div class="title">Lorem, ipsum dolor.</div>Lorem ipsum, dolor sit amet
-            consectetur adipisicing
-            elit. Odio illo in quaerat repudiandae nam fugit iusto architecto?
-            Ut, cupiditate doloremque! Dignissimos ullam pariatur illo! Cum cumque quidem
-            perferendis animi molestiae maiores eaque nisi minus. Nisi, officia? Voluptas,
-            doloremque doloribus sapiente asperiores a delectus.
           </div>
         </div>
       </div>
@@ -183,6 +182,11 @@ export default {
           font-size: 13px
           color: #fff
           font-weight: 300
+
+      > .subBtn
+        width: 20px
+        height: 20px
+        background-color: red
 
 
     .tags
