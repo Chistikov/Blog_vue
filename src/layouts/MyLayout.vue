@@ -4,13 +4,14 @@
     <div class="content">
       <Content></Content>
     </div>
-    <div class="footer">footer</div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Header from '../components/Header';
 import Content from './Content';
+import Footer from '../components/Footer';
 
 export default {
   data() {
@@ -18,7 +19,7 @@ export default {
       leftDrawerOpen: false,
     };
   },
-  components: { Header, Content },
+  components: { Header, Content, Footer },
 };
 </script>
 

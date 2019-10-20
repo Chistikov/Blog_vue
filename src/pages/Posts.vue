@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="row justify-center q-mt-xl q-mb-sm q-pa-md">
+    <!-- <div class="row justify-center q-mt-xl q-mb-sm q-pa-md">
       <div class="centerContainer col">
         <div class="inputWrp q-mr-sm">
           <q-input outlined v-model="input" label="search..." class="col-md-12" />
@@ -11,11 +11,11 @@
 
         <q-btn outline color="primary" label="search" />
       </div>
-    </div>
+    </div>-->
 
     <div class="row justify-center q-mt-xl q-mb-sm q-pa-md">
       <div class="postsWrp">
-        <div class="postCard">
+        <router-link to="/post/2" class="postCard">
           <div
             class="lBlock"
             style="background-image: url('https://images.unsplash.com/photo-1442328166075-47fe7153c128?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')"
@@ -65,115 +65,7 @@
               <q-chip size="12px">tags</q-chip>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="postsWrp">
-        <div class="postCard">
-          <div
-            class="lBlock"
-            style="background-image: url('https://images.unsplash.com/photo-1571396616632-30c678b40c04?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80')"
-          >
-            <div class="userData">
-              <q-avatar size="45px" class="avatar">
-                <img src="https://cdn.quasar.dev/img/avatar.png" />
-              </q-avatar>
-              <div class="rBlock">
-                <div class="login">@ndev98</div>
-                <div class="username">John Doe</div>
-              </div>
-
-              <div>
-                <div>
-                  <q-chip outline color="orange" text-color="white" icon-right="star">Star</q-chip>
-                </div>
-                <div>
-                  <q-chip color="primary" text-color="white" icon="bookmark">subscribe</q-chip>
-                </div>
-                <div>
-                  <q-chip outline color="primary" text-color="primary" icon="bookmark">1</q-chip>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="postContent">
-            <div class="titleBlock">
-              <div
-                class="title"
-              >Lorem, ipsum dolor, ipsum dolor. Lorem, ipsum dolor, ipsum dolor Loolor, ips.</div>
-              <div class="dateBlock">
-                <q-badge align="middle" color="grey">3 days ago</q-badge>
-              </div>
-            </div>
-            <div class="contentBlock">
-              Lorem ipsum dolor sit amet consectetur adipisicing
-              lit consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elitconsectetur adipisicing elit
-              consectetur adipisicing elit.
-            </div>
-            <div class="tags">
-              <q-chip size="12px">some</q-chip>
-              <q-chip size="12px">fucking</q-chip>
-              <q-chip size="12px">tags</q-chip>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="postsWrp">
-        <div class="postCard">
-          <div
-            class="lBlock"
-            style="background-image: url('https://images.unsplash.com/photo-1500817487388-039e623edc21?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=635&q=80')"
-          >
-            <div class="userData">
-              <q-avatar size="45px" class="avatar">
-                <img src="https://cdn.quasar.dev/img/avatar.png" />
-              </q-avatar>
-              <div class="rBlock">
-                <div class="login">@ndev98</div>
-                <div class="username">John Doe</div>
-              </div>
-
-              <div>
-                <div>
-                  <q-chip outline color="orange" text-color="white" icon-right="star">Star</q-chip>
-                </div>
-                <div>
-                  <q-chip color="primary" text-color="white" icon="bookmark">subscribe</q-chip>
-                </div>
-                <div>
-                  <q-chip outline color="primary" text-color="primary" icon="bookmark">1</q-chip>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="postContent">
-            <div class="titleBlock">
-              <div
-                class="title"
-              >Lorem, ipsum dolor, ipsum dolor. Lorem, ipsum dolor, ipsum dolor Loolor, ips.</div>
-              <div class="dateBlock">
-                <q-badge align="middle" color="grey">3 days ago</q-badge>
-              </div>
-            </div>
-            <div class="contentBlock">
-              Lorem ipsum dolor sit amet consectetur adipisicing
-              lit consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elitconsectetur adipisicing elit
-              consectetur adipisicing elit.
-            </div>
-            <div class="tags">
-              <q-chip size="12px">some</q-chip>
-              <q-chip size="12px">fucking</q-chip>
-              <q-chip size="12px">tags</q-chip>
-            </div>
-          </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -220,7 +112,8 @@ export default {
     flex-direction: row
     overflow: hidden
     transition: border .25s
-
+    text-decoration: none
+    color: #000
     &:hover
       border: 1px solid #e5e5e5
 
@@ -286,6 +179,7 @@ export default {
 
       > .contentBlock
         flex-grow: 1
+        color: #444
 
       > .tags
         width: 100%

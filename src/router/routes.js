@@ -13,6 +13,11 @@ const routes = [
         path: 'posts',
         component: () => import('pages/Posts.vue'),
       },
+      {
+        path: '/post/:post_id',
+        component: () => import('pages/PostPage.vue'),
+        props: true,
+      },
     ],
   },
 ];
