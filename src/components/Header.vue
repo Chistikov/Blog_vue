@@ -31,7 +31,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  components: {},
+};
 </script>
 
 <style lang="sass" scoped>
@@ -43,6 +45,7 @@ export default {};
   display: flex
   align-items: center
   justify-content: center
+  position: relative
 
 .userPanel
   padding: 25px 30px
