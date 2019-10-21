@@ -52,7 +52,8 @@ export default {
 
 <style lang="sass" scoped>
 .shiftPage
-  transform: translateX(100px)
+  transform: translateX(170px)
+  filter:  saturate(65%)
 
 .hideSidebar
   transform: translateX(-100%)
@@ -71,7 +72,7 @@ export default {
     display: flex
     flex-direction: column
     justify-content: space-between
-    transition: transform .2s
+    transition: transform .2s, filter .25s
 
   .content
     align-items: stretch
