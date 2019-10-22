@@ -6,8 +6,8 @@
       <router-link class="menu-item" to="/">{{ $t('my posts') }}</router-link>
       <router-link class="menu-item" to="/">{{ $t('create new post') }}</router-link>
       <div class="delimiter"></div>
-      <div class="menu-item" @click="openLogInFrom">{{ $t('log in') }}</div>
-      <div class="menu-item" @click="openLogOutFrom">{{ $t('log out') }}</div>
+      <div class="menu-item">{{ $t('log in') }}</div>
+      <div class="menu-item">{{ $t('log out') }}</div>
     </div>
     <div class="langBlock">
       <span
@@ -25,14 +25,15 @@
 </template>
 
 <script>
-import popup from './Popup.js';
+// import popup from './Popup.js';
 
 export default {
   methods: {
     changeLang(lang) {
       this.$i18n.locale = lang;
     },
-    ...popup,
+    computed: {},
+    // ...popup,
   },
 };
 </script>

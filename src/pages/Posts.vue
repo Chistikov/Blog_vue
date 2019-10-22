@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{getPostsList}}
     <div class="row justify-center q-mt-xl q-mb-sm q-pa-md">
       <div class="centerContainer col">
         <div class="inputWrp q-mr-sm">
@@ -12,7 +13,6 @@
         <q-btn outline color="primary" label="search" />
       </div>
     </div>
-
     <div class="row justify-center q-mt-xl q-mb-sm q-pa-md">
       <div class="postsWrp">
         <router-link to="/post/1" class="postCard">
@@ -176,6 +176,8 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
+
 export default {
   data() {
     return {
@@ -183,6 +185,19 @@ export default {
       input: '',
       select: '',
     };
+  },
+  methods: {
+    ...mapMutations([]),
+    getAllPosts() {
+      console.log('=============', this.store);
+      return this.store.getters.getPostsList();
+    },
+  },
+  mounted() {
+    console.log(this.$store.state);
+  },
+  computed: {
+    ...mapGetters('postsModule', ['getPostsList']),
   },
 };
 </script>
