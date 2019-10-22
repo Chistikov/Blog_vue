@@ -6,28 +6,41 @@
       <router-link class="menu-item" to="/">{{ $t('my posts') }}</router-link>
       <router-link class="menu-item" to="/">{{ $t('create new post') }}</router-link>
       <div class="delimiter"></div>
-      <router-link class="menu-item" to="/">{{ $t('log out') }}</router-link>
+      <div class="menu-item" @click="openLogInFrom">{{ $t('log in') }}</div>
+      <div class="menu-item" @click="openLogOutFrom">{{ $t('log out') }}</div>
     </div>
     <div class="langBlock">
-      <!-- {{$t("success")}} fasf -->
-      <span class="langEl" @click="changeLang('en')">en</span>
-      <span class="langEl" @click="changeLang('ru')">ru</span>
+      <span
+        class="langEl"
+        @click="changeLang('en')"
+        v-bind:class="{ colorBlue: this.$i18n.locale === 'en' }"
+      >en</span>
+      <span
+        class="langEl"
+        @click="changeLang('ru')"
+        v-bind:class="{ colorBlue: this.$i18n.locale === 'ru' }"
+      >ru</span>
     </div>
   </div>
 </template>
 
 <script>
+import popup from './Popup.js';
+
 export default {
   methods: {
     changeLang(lang) {
       this.$i18n.locale = lang;
-      console.log(this.$i18n.locale);
     },
+    ...popup,
   },
 };
 </script>
 
 <style lang="sass" scoped>
+.colorBlue
+  color: #444
+
 .sidebar
   position: fixed
   top: 0
@@ -55,7 +68,7 @@ export default {
     > .menu-item
       display: block
       text-align: center
-      font-size: 15px
+      font-size: 14px
       text-decoration: none
       text-transform: uppercase
       color: #444
@@ -71,8 +84,10 @@ export default {
   > .langBlock
     margin-bottom: 35px
     text-align: center
+    color: #ccc
 
     > .langEl
         margin: 0px 7px
-        color: #666
+        transition: color .2s
+        cursor: pointer
 </style>

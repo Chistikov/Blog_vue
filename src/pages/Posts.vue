@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <div class="row justify-center q-mt-xl q-mb-sm q-pa-md">
+    <div class="row justify-center q-mt-xl q-mb-sm q-pa-md">
       <div class="centerContainer col">
         <div class="inputWrp q-mr-sm">
           <q-input outlined v-model="input" label="search..." class="col-md-12" />
@@ -11,7 +11,7 @@
 
         <q-btn outline color="primary" label="search" />
       </div>
-    </div>-->
+    </div>
 
     <div class="row justify-center q-mt-xl q-mb-sm q-pa-md">
       <div class="postsWrp">

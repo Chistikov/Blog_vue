@@ -64,8 +64,8 @@ export default {
   .pulseBtn
     position: fixed
     z-index: 1000
-    top: 0
-    left: 0
+    top: 10px
+    left: 10px
 
   .mainPage
     min-height: 100vh
@@ -74,14 +74,8 @@ export default {
     justify-content: space-between
     transition: transform .2s, filter .25s
 
+
   .content
     align-items: stretch
     flex-grow: 1
-
-  .footer
-    height: 80px
-    line-height: 80px
-    text-align: center
-
-
 </style>
