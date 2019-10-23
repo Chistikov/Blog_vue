@@ -176,7 +176,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { /* mapMutations, */ mapActions, mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -187,18 +187,25 @@ export default {
     };
   },
   methods: {
-    ...mapMutations([]),
-    getAllPosts() {
-      console.log('=============', this.store);
-      return this.store.getters.getPostsList();
-    },
+    ...mapActions('postsModule', ['fetchAllPosts']),
+    // getAllPosts() {
+    //   console.log('=============', this.store);
+    //   return this.store.getters.getPostsList();
+    // },
   },
   mounted() {
-    console.log(this.$store.state);
+    // console.log(this.$store.state.postsModule.dataFromStore);
+    // console.log(this.getAllPosts());
+    this.fetchAllPosts();
   },
   computed: {
     ...mapGetters('postsModule', ['getPostsList']),
   },
+
+  // ...mapGetters('postsModule', ['getPostsList']),
+  // getAllPosts1() {
+  //   return this.$store.state.postsModule.dataFromStore;
+  // },
 };
 </script>
 

@@ -1,2 +1,5 @@
-export function someMutation(/* state */) {
-}
+export default {
+  setPostsList(state, data) {
+    state.postsList = data;
+  },
+};

@@ -32,8 +32,6 @@ export default {
     changeLang(lang) {
       this.$i18n.locale = lang;
     },
-    computed: {},
-    // ...popup,
   },
 };
 </script>
