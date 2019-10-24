@@ -3,5 +3,7 @@
   "my posts": "мои посты",
   "create new post": "создать новый пост",
   "log out": "выход",
-  "log in": "войти"
+  "log in": "войти",
+  "search": "поиск",
+  "select category": "выберите категорию поиска"
 }

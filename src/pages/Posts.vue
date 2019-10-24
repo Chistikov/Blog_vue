@@ -1,172 +1,103 @@
 <template>
   <div>
-    {{getPostsList}}
-    <div class="row justify-center q-mt-xl q-mb-sm q-pa-md">
+    <!-- данные о постах -->
+    <!-- {{ getPostsList }} -->
+    <div
+      class="row justify-center q-mt-xl q-mb-sm q-pa-md"
+      v-if="getPostsList.length > 0"
+    >
       <div class="centerContainer col">
         <div class="inputWrp q-mr-sm">
-          <q-input outlined v-model="input" label="search..." class="col-md-12" />
+          <q-input
+            outlined
+            v-model="input"
+            :label="$t('search')"
+            class="col-md-12"
+          />
         </div>
         <div class="selectWrp q-mr-sm col-md-12">
-          <q-select outlined v-model="select" :options="options" label="select category" />
+          <q-select
+            outlined
+            v-model="select"
+            :options="Object.keys(getPostsList[0])"
+            :label="$t('select category')"
+            flat
+          >
+            <template v-slot:append>
+              <q-icon
+                v-if="select !== ''"
+                name="close"
+                @click.stop="select = ''"
+                class="cursor-pointer"
+              />
+            </template>
+          </q-select>
         </div>
 
-        <q-btn outline color="primary" label="search" />
+        <q-btn outline color="primary" :label="$t('search')" />
       </div>
     </div>
     <div class="row justify-center q-mt-xl q-mb-sm q-pa-md">
       <div class="postsWrp">
-        <router-link to="/post/1" class="postCard">
+        <router-link
+          :to="`/post/${post.id}`"
+          class="postCard"
+          v-for="(post, id) in getPostsList"
+          v-bind:key="id"
+        >
           <div
             class="lBlock"
-            style="background-image: url('https://images.unsplash.com/photo-1442328166075-47fe7153c128?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')"
+            :style="{ backgroundImage: `url(${post.bgImage})` }"
           >
             <div class="userData">
-              <q-avatar size="45px" class="avatar">
-                <img src="https://cdn.quasar.dev/img/avatar.png" />
-              </q-avatar>
+              <div
+                class="avatar"
+                :style="{ backgroundImage: `url(${post.authorData.img})` }"
+              ></div>
+              <!-- <q-avatar size="45px" class="avatar">
+                <img v-bind:src="post.authorData.img" />
+              </q-avatar> -->
               <div class="rBlock">
-                <div class="login">@ndev98</div>
-                <div class="username">John Doe</div>
+                <div class="login">@{{ post.authorData.login }}</div>
+                <div class="username">{{ post.authorData.fullName }}</div>
               </div>
 
               <div>
                 <div>
-                  <q-chip outline color="orange" text-color="white" icon-right="star">Star</q-chip>
+                  <q-chip outline color="orange" text-color="white" icon="star">
+                    1
+                  </q-chip>
                 </div>
                 <!-- <div>
                   <q-chip color="primary" text-color="white" icon="bookmark">subscribe</q-chip>
                 </div>-->
                 <div>
-                  <q-chip outline color="primary" text-color="primary" icon="bookmark">1</q-chip>
+                  <q-chip
+                    outline
+                    color="primary"
+                    text-color="primary"
+                    icon="bookmark"
+                  >
+                    1
+                  </q-chip>
                 </div>
               </div>
             </div>
           </div>
           <div class="postContent">
             <div class="titleBlock">
-              <div
-                class="title"
-              >Lorem, ipsum dolor, ipsum dolor. Lorem, ipsum dolor, ipsum dolor Loolor, ips.</div>
+              <div class="title">{{ post.title }}</div>
               <div class="dateBlock">
-                <q-badge align="middle" color="grey">3 days ago</q-badge>
+                <q-badge align="middle" color="grey">
+                  {{ formatedDate(post.date) }}
+                </q-badge>
               </div>
             </div>
-            <div class="contentBlock">
-              Lorem ipsum dolor sit amet consectetur adipisicing
-              lit consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elitconsectetur adipisicing elit
-              consectetur adipisicing elit.
-            </div>
+            <div class="contentBlock">{{ post.text }}</div>
             <div class="tags">
-              <q-chip size="12px">some</q-chip>
-              <q-chip size="12px">fucking</q-chip>
-              <q-chip size="12px">tags</q-chip>
-            </div>
-          </div>
-        </router-link>
-
-        <router-link to="/post/2" class="postCard">
-          <div
-            class="lBlock"
-            style="background-image: url('https://images.unsplash.com/photo-1571396616632-30c678b40c04?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80')"
-          >
-            <div class="userData">
-              <q-avatar size="45px" class="avatar">
-                <img src="https://cdn.quasar.dev/img/avatar.png" />
-              </q-avatar>
-              <div class="rBlock">
-                <div class="login">@ndev98</div>
-                <div class="username">John Doe</div>
-              </div>
-
-              <div>
-                <div>
-                  <q-chip outline color="orange" text-color="white" icon-right="star">Star</q-chip>
-                </div>
-                <!-- <div>
-                  <q-chip color="primary" text-color="white" icon="bookmark">subscribe</q-chip>
-                </div>-->
-                <div>
-                  <q-chip outline color="primary" text-color="primary" icon="bookmark">1</q-chip>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="postContent">
-            <div class="titleBlock">
-              <div
-                class="title"
-              >Lorem, ipsum dolor, ipsum dolor. Lorem, ipsum dolor, ipsum dolor Loolor, ips.</div>
-              <div class="dateBlock">
-                <q-badge align="middle" color="grey">3 days ago</q-badge>
-              </div>
-            </div>
-            <div class="contentBlock">
-              Lorem ipsum dolor sit amet consectetur adipisicing
-              lit consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elitconsectetur adipisicing elit
-              consectetur adipisicing elit.
-            </div>
-            <div class="tags">
-              <q-chip size="12px">some</q-chip>
-              <q-chip size="12px">fucking</q-chip>
-              <q-chip size="12px">tags</q-chip>
-            </div>
-          </div>
-        </router-link>
-
-        <router-link to="/post/3" class="postCard">
-          <div
-            class="lBlock"
-            style="background-image: url('https://images.unsplash.com/photo-1471896281934-0868e62fe49f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80')"
-          >
-            <div class="userData">
-              <q-avatar size="45px" class="avatar">
-                <img src="https://cdn.quasar.dev/img/avatar.png" />
-              </q-avatar>
-              <div class="rBlock">
-                <div class="login">@ndev98</div>
-                <div class="username">John Doe</div>
-              </div>
-
-              <div>
-                <div>
-                  <q-chip outline color="orange" text-color="white" icon-right="star">Star</q-chip>
-                </div>
-                <!-- <div>
-                  <q-chip color="primary" text-color="white" icon="bookmark">subscribe</q-chip>
-                </div>-->
-                <div>
-                  <q-chip outline color="primary" text-color="primary" icon="bookmark">1</q-chip>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="postContent">
-            <div class="titleBlock">
-              <div
-                class="title"
-              >Lorem, ipsum dolor, ipsum dolor. Lorem, ipsum dolor, ipsum dolor Loolor, ips.</div>
-              <div class="dateBlock">
-                <q-badge align="middle" color="grey">3 days ago</q-badge>
-              </div>
-            </div>
-            <div class="contentBlock">
-              Lorem ipsum dolor sit amet consectetur adipisicing
-              lit consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elit consectetur adipisicing elit
-              consectetur adipisicing elitconsectetur adipisicing elit
-              consectetur adipisicing elit.
-            </div>
-            <div class="tags">
-              <q-chip size="12px">some</q-chip>
-              <q-chip size="12px">fucking</q-chip>
-              <q-chip size="12px">tags</q-chip>
+              <q-chip size="12px" v-for="(tag, id) in post.tags" v-bind:key="id"
+                >#{{ tag }}</q-chip
+              >
             </div>
           </div>
         </router-link>
@@ -176,7 +107,8 @@
 </template>
 
 <script>
-import { /* mapMutations, */ mapActions, mapGetters } from 'vuex';
+import moment from 'moment';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -188,24 +120,44 @@ export default {
   },
   methods: {
     ...mapActions('postsModule', ['fetchAllPosts']),
-    // getAllPosts() {
-    //   console.log('=============', this.store);
-    //   return this.store.getters.getPostsList();
-    // },
+
+    formatedDate(unixDate) {
+      console.log(unixDate);
+      console.log(moment(unixDate).isValid());
+
+      const m = moment(unixDate * 1000);
+      if (!m.isValid()) {
+        return '';
+      }
+      moment.locale(this.$i18n.locale);
+      return m.fromNow();
+
+      // const formatedDate = new Date(unixDate * 1000);
+      // const options = {
+      //   era: 'long',
+      //   year: 'numeric',
+      //   month: 'long',
+      //   day: 'numeric',
+      //   weekday: 'long',
+      //   timezone: 'UTC',
+      //   hour: 'numeric',
+      //   minute: 'numeric',
+      //   second: 'numeric',
+      // };
+
+      // return formatedDate.toLocaleString('ru', options);
+    },
   },
   mounted() {
-    // console.log(this.$store.state.postsModule.dataFromStore);
-    // console.log(this.getAllPosts());
     this.fetchAllPosts();
   },
   computed: {
     ...mapGetters('postsModule', ['getPostsList']),
-  },
 
-  // ...mapGetters('postsModule', ['getPostsList']),
-  // getAllPosts1() {
-  //   return this.$store.state.postsModule.dataFromStore;
-  // },
+    getSortedPosts() {
+      return null;
+    },
+  },
 };
 </script>
 
@@ -218,9 +170,11 @@ export default {
 
   .inputWrp
     flex-grow: 1
+    flex-shrink: 0
 
   .selectWrp
     flex-grow: 1
+    flex-shrink: 0
 
 .postsWrp
   width: 960px
@@ -240,6 +194,10 @@ export default {
     transition: border .25s
     text-decoration: none
     color: #000
+
+    &:last-child
+      margin-bottom: 0
+
     &:hover
       border: 1px solid #e5e5e5
 
@@ -265,7 +223,13 @@ export default {
 
 
         > .avatar
+          display: inline-block
+          height: 45px
+          width: 45px
+          border-radius: 100%
           margin-bottom: 10px
+          background-position: center
+          background-size: cover
 
         > .rBlock
           margin-bottom: 18px
@@ -273,7 +237,7 @@ export default {
 
           > .login
             font-size: 16px
-            color: rgba(255,255,255,.55)
+            color: rgba(190,190,190,1)
             font-weight: 300
 
           > .username
@@ -309,5 +273,4 @@ export default {
 
       > .tags
         width: 100%
-
 </style>
