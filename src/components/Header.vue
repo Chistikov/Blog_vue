@@ -4,7 +4,7 @@
       <div class="topPanel">
         <div class="userAvatar q-mr-md">
           <q-avatar>
-            <img src="https://cdn.quasar.dev/img/avatar.png" />
+            <img ref="topBgImg" src="https://cdn.quasar.dev/img/avatar.png" />
           </q-avatar>
         </div>
         <div class="userData q-mr-md q-mr-md">
@@ -86,5 +86,4 @@ export default {
   // background: red
   line-height: 50px
   color: #555
-
 </style>

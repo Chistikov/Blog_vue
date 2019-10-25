@@ -6,4 +6,8 @@ export default {
   setSelectedPost(state, post) {
     state.selectedPost = post;
   },
+
+  destroyData_setSelectedPost(state) {
+    state.selectedPost = {};
+  },
 };
