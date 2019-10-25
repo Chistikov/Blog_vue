@@ -1,40 +1,53 @@
 <template>
   <div class="post_wrp">
+    {{ getSelectedPost }}
     <div class="dateBlock">
-      <q-badge align="middle" color="grey">10/20/2019</q-badge>
+      <q-badge align="middle" color="grey">{{
+        formatedDate(getSelectedPost.date)
+      }}</q-badge>
     </div>
-    <div
-      class="title"
-    >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, modi! post {{post_id}}</div>
+    <!-- {{ getSelectedPost }} -->
+    <div class="title">
+      {{ getSelectedPost.title }}
+    </div>
     <div class="text">
-      Lorem ipsum, dolor sit amet consectetur adipisicing
-      elit. Numquam optio corrupti earum incidunt quis necessitatibus aspernatur
-      tempora doloremque accusantium tempore consectetur,
-      corporis at veniam, amet unde debitis nostrum beatae illo.
-      Lorem ipsum, dolor sit amet consectetur adipisicing
-      elit. Numquam optio corrupti earum incidunt quis necessitatibus aspernatur
-      tempora doloremque accusantium tempore consectetur,
-      corporis at veniam, amet unde debitis nostrum beatae illo.
-      Lorem ipsum, dolor sit amet consectetur adipisicing
-      elit. Numquam optio corrupti earum incidunt quis necessitatibus aspernatur
-      tempora doloremque accusantium tempore consectetur,
-      corporis at veniam, amet unde debitis nostrum beatae illo.
-      Lorem ipsum, dolor sit amet consectetur adipisicing
-      elit. Numquam optio corrupti earum incidunt quis necessitatibus aspernatur
-      tempora doloremque accusantium tempore consectetur,
-      corporis at veniam, amet unde debitis nostrum beatae illo.
+      {{ getSelectedPost.text }}
     </div>
     <div class="tags">
-      <q-chip size="12px">#some</q-chip>
-      <q-chip size="12px">#fucking</q-chip>
-      <q-chip size="12px">#tags</q-chip>
+      <q-chip size="12px" v-for="(tag, id) in getSelectedPost.tags" :key="id">
+        #{{ tag }}
+      </q-chip>
     </div>
   </div>
 </template>
 
 <script>
+import moment from 'moment';
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   props: ['post_id'],
+  computed: {
+    ...mapGetters('postsModule', ['getSelectedPost']),
+  },
+  methods: {
+    ...mapActions('postsModule', ['fetchOnePostById']),
+
+    formatedDate(unixDate) {
+      const m = moment(unixDate * 1000);
+      if (!m.isValid()) {
+        return '';
+      }
+      moment.locale(this.$i18n.localeg);
+      return m.format('D.M.YYYY');
+    },
+  },
+  created() {
+    this.fetchOnePostById(this.post_id);
+  },
+  beforeDestroy() {
+    // alert('before destroy');
+  },
 };
 </script>
 

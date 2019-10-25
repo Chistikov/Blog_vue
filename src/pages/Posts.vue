@@ -122,30 +122,12 @@ export default {
     ...mapActions('postsModule', ['fetchAllPosts']),
 
     formatedDate(unixDate) {
-      console.log(unixDate);
-      console.log(moment(unixDate).isValid());
-
       const m = moment(unixDate * 1000);
       if (!m.isValid()) {
         return '';
       }
-      moment.locale(this.$i18n.locale);
+      moment.locale(this.$i18n.localeg);
       return m.fromNow();
-
-      // const formatedDate = new Date(unixDate * 1000);
-      // const options = {
-      //   era: 'long',
-      //   year: 'numeric',
-      //   month: 'long',
-      //   day: 'numeric',
-      //   weekday: 'long',
-      //   timezone: 'UTC',
-      //   hour: 'numeric',
-      //   minute: 'numeric',
-      //   second: 'numeric',
-      // };
-
-      // return formatedDate.toLocaleString('ru', options);
     },
   },
   mounted() {

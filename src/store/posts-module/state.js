@@ -1,3 +1,6 @@
-export default {
-  postsList: [],
-};
+export default function () {
+  return {
+    postsList: [],
+    selectedPost: {},
+  };
+}
