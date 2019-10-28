@@ -25,10 +25,38 @@
       <div class="text">
         {{ getSelectedPost.text }}
       </div>
-      <div class="tags">
-        <q-chip size="12px" v-for="(tag, id) in getSelectedPost.tags" :key="id">
-          #{{ tag }}
-        </q-chip>
+
+      <div class="dataBlock">
+        <div class="tags">
+          <q-chip
+            size="12px"
+            v-for="(tag, id) in getSelectedPost.tags"
+            :key="id"
+          >
+            #{{ tag }}
+          </q-chip>
+        </div>
+        <div class="viewBlock">
+          <div
+            class="userAvatar"
+            :style="{
+              backgroundImage: `url(${getSelectedPost.authorData.img})`,
+            }"
+          ></div>
+          <div
+            class="userAvatar"
+            :style="{
+              backgroundImage: `url(${getSelectedPost.authorData.img})`,
+            }"
+          ></div>
+          <div
+            class="userAvatar"
+            :style="{
+              backgroundImage: `url(${getSelectedPost.authorData.img})`,
+            }"
+          ></div>
+          <div class="counter">+100</div>
+        </div>
       </div>
     </div>
   </div>
@@ -58,7 +86,6 @@ export default {
   },
   created() {
     this.fetchOnePostById(this.post_id);
-    console.log(this);
   },
   beforeDestroy() {
     this.destroyData_setSelectedPost();
@@ -90,7 +117,7 @@ export default {
       display: inline-block
       padding: 30px
       display: flex
-      background: pink
+      // background: pink
       justify-content: center
 
       > .avatar
@@ -115,6 +142,36 @@ export default {
     text-align: justify
     color: #444
 
-  > .tags
+  > .dataBlock
+    display: flex
+    justify-content: space-between
+    align-items: center
     margin-top: 40px
+
+    > .viewBlock
+
+      > .userAvatar
+        display: inline-block
+        width: 34px
+        height: 34px
+        border-radius: 100%
+        border: 2px solid #fff
+        margin-left: -9px
+        background-size: cover
+        background-position: center
+
+      > .counter
+        display: inline-block
+        background: #F6BA98
+        width: 45px
+        height: 34px
+        border-radius: 16px
+        border: 2px solid #fff
+        margin-left: -9px
+        vertical-align: top
+        line-height: 31px
+        font-size: 11px
+        color: #fff
+        font-weight: 600
+        text-align: center
 </style>

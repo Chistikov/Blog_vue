@@ -4,7 +4,9 @@
     <div class="menu">
       <router-link class="menu-item" to="/">{{ $t('account') }}</router-link>
       <router-link class="menu-item" to="/">{{ $t('my posts') }}</router-link>
-      <router-link class="menu-item" to="/">{{ $t('create new post') }}</router-link>
+      <router-link class="menu-item" to="/">{{
+        $t('create new post')
+      }}</router-link>
       <div class="delimiter"></div>
       <div class="menu-item">{{ $t('log in') }}</div>
       <div class="menu-item">{{ $t('log out') }}</div>
@@ -13,13 +15,15 @@
       <span
         class="langEl"
         @click="changeLang('en')"
-        v-bind:class="{ colorBlue: this.$i18n.locale === 'en' }"
-      >en</span>
+        v-bind:class="{ colorBlue: $i18n.locale === 'en' }"
+        >en</span
+      >
       <span
         class="langEl"
         @click="changeLang('ru')"
-        v-bind:class="{ colorBlue: this.$i18n.locale === 'ru' }"
-      >ru</span>
+        v-bind:class="{ colorBlue: $i18n.locale === 'ru' }"
+        >ru</span
+      >
     </div>
   </div>
 </template>

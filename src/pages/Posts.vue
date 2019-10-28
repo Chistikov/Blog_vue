@@ -2,6 +2,7 @@
   <div>
     <!-- данные о постах -->
     <!-- {{ getPostsList }} -->
+    {{ getSortedPosts }}
     <div
       class="row justify-center q-mt-xl q-mb-sm q-pa-md"
       v-if="getPostsList.length > 0"
@@ -42,7 +43,7 @@
         <router-link
           :to="`/post/${post.id}`"
           class="postCard"
-          v-for="(post, id) in getPostsList"
+          v-for="(post, id) in getSortedPosts"
           v-bind:key="id"
         >
           <div
@@ -137,7 +138,20 @@ export default {
     ...mapGetters('postsModule', ['getPostsList']),
 
     getSortedPosts() {
-      return null;
+      // console.log(this.getPostsList);
+      const sortedElmts = [];
+
+      if (this.select !== '' && this.input !== '') {
+        this.getPostsList.forEach((element) => {
+          console.log(element);
+          if (element[this.select].indexOf(this.input) !== -1) {
+            sortedElmts.push(element);
+          }
+        });
+
+        return sortedElmts;
+      }
+      return this.getPostsList;
     },
   },
 };
