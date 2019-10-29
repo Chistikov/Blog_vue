@@ -10,8 +10,13 @@ const routes = [
         component: () => import('pages/Home.vue'),
       },
       {
-        path: 'posts',
+        path: 'categories',
+        component: () => import('pages/Categories.vue'),
+      },
+      {
+        path: 'category/:category_name',
         component: () => import('pages/Posts.vue'),
+        props: true,
       },
       {
         path: '/post/:post_id',

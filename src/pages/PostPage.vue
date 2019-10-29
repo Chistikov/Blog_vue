@@ -26,6 +26,12 @@
         {{ getSelectedPost.text }}
       </div>
 
+      <q-markdown>
+        ==This sentence is is marked.==
+      </q-markdown>
+
+      <!-- <div v-html="compiledMarkdown"></div> -->
+
       <div class="dataBlock">
         <div class="tags">
           <q-chip
@@ -67,13 +73,14 @@ import moment from 'moment';
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
+  components: {},
   props: ['post_id'],
   computed: {
     ...mapGetters('postsModule', ['getSelectedPost']),
   },
   methods: {
     ...mapActions('postsModule', ['fetchOnePostById']),
-    ...mapMutations('postsModule', ['destroyData_setSelectedPost']),
+    ...mapMutations('postsModule', ['destroyData_selectedPost']),
 
     formatedDate(unixDate) {
       const m = moment(unixDate * 1000);
@@ -83,6 +90,10 @@ export default {
       moment.locale(this.$i18n.localeg);
       return m.format('D.M.YYYY');
     },
+
+    // compiledMarkdown() {
+    //   return marked(this.input, { sanitize: true });
+    // },
   },
   created() {
     this.fetchOnePostById(this.post_id);

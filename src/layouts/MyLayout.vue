@@ -1,12 +1,17 @@
 <template>
   <div class="wrapper">
+    <div
+      class="div"
+      v-bind:class="{ darkOverflov: !sideBarIsHidden }"
+      @click="hideSidebar"
+    ></div>
     <div class="pulseBtn" @click="toggleSidebar">
       <PulseButton></PulseButton>
     </div>
     <Sidebar v-bind:class="{ hideSidebar: sideBarIsHidden }"></Sidebar>
     <div
       class="mainPage"
-      v-bind:class="{ shiftPage: !sideBarIsHidden, dimmed:!sideBarIsHidden }"
+      v-bind:class="{ shiftPage: !sideBarIsHidden }"
       @click="hideSidebar"
     >
       <Header></Header>
@@ -51,6 +56,15 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.darkOverflov
+  position: fixed
+  top: 0px
+  left: 0px
+  width: 100%
+  height: 100vh
+  background: rgba(0,0,0,.4)
+  z-index: 99
+
 .shiftPage
   transform: translateX(170px)
   filter:  saturate(65%)
@@ -73,7 +87,6 @@ export default {
     flex-direction: column
     justify-content: space-between
     transition: transform .2s, filter .25s
-
 
   .content
     align-items: stretch

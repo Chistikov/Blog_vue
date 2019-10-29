@@ -1,8 +1,9 @@
 <template>
   <div>
+    {{ category_name }}
     <!-- данные о постах -->
     <!-- {{ getPostsList }} -->
-    {{ getSortedPosts }}
+    <!-- {{ getSortedPosts }} -->
     <div
       class="row justify-center q-mt-xl q-mb-sm q-pa-md"
       v-if="getPostsList.length > 0"
@@ -112,6 +113,7 @@ import moment from 'moment';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
+  props: ['category_name'],
   data() {
     return {
       options: ['1', '2'],

@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import postsModule from './posts-module';
+import categoriesModule from './categories-module';
 
 window.Vuex = Vuex;
 Vue.use(Vuex);
@@ -15,6 +16,7 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       postsModule,
+      categoriesModule,
     },
 
     // enable strict mode (adds overhead!)
