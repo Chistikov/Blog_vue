@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import postsModule from './posts-module';
 import categoriesModule from './categories-module';
+import authModule from './auth-module';
 
 window.Vuex = Vuex;
 Vue.use(Vuex);
@@ -17,6 +18,7 @@ export default function (/* { ssrContext } */) {
     modules: {
       postsModule,
       categoriesModule,
+      authModule,
     },
 
     // enable strict mode (adds overhead!)

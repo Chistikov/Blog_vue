@@ -23,6 +23,10 @@ const routes = [
         component: () => import('pages/PostPage.vue'),
         props: true,
       },
+      {
+        path: 'login',
+        component: () => import('pages/AuthPage.vue'),
+      },
     ],
   },
 ];

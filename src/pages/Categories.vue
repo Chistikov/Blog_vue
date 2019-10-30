@@ -64,7 +64,7 @@ export default {
     text-decoration: none
     position: relative
     overflow: hidden
-    transition: background-size 0.3s ease-in-out
+    transition: background-size 0.25s ease-in-out
 
     &:after
       position: absolute
@@ -75,7 +75,7 @@ export default {
       width: 100%
       height: 100%
       background: linear-gradient(to top, rgba(0,0,0,.15) , rgba(0,0,0,0))
-      transition: opacity .3s ease-in-out
+      transition: opacity .25s ease-in-out
 
     &:hover
       background-size: auto 105%
